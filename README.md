@@ -12,7 +12,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Contact](#contact)
+  * [CRUD Operations](#CRUD)
 
 ## Getting Started
 
@@ -29,6 +29,11 @@ git clone https://github.com/HRR49HouseStark/Photos.git
 ```sh
 npm install
 ```
-
-## Contact
-David Kim - davidhk21@gmail.com
+### CRUD
+3. CRUD Operations
+| Type    | Endpoint           | Action            |
+| ------- |--------------------| ------------------|
+| POST    | '/api/addListing'  | Adds listing      |
+| GET     | '/api/listings/:id'| Retrieves listing |
+| PUT     | '/api/listings/:id'| Updates listing   |
+| DELETE  | '/api/listings/:id'| Deletes listing   |

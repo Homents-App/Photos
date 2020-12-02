@@ -1,8 +1,7 @@
-const {Listings, db} = require('./index.js');
+const {Listings, db} = require('../db/index.js');
 const faker = require('faker');
-const data = require('./photoData.js');
+const data = require('../db/photoData.js');
 
-// get photos randomly without getting duplicates
 var getRandomPhotos = (array, numOfPhotos) => {
   var randomPhotos = [];
   while (numOfPhotos > 0) {
@@ -15,9 +14,8 @@ var getRandomPhotos = (array, numOfPhotos) => {
   return randomPhotos;
 }
 
-// seeding database
+var seed = (i) => {
 
-for (var i = 0; i <= 100; i++) {
   var house = data.houses[Math.floor(Math.random() * data.houses.length)];
   var bedrooms = getRandomPhotos(data.bedrooms, 3);
   var kitchens = getRandomPhotos(data.kitchens, 2);
@@ -36,8 +34,9 @@ for (var i = 0; i <= 100; i++) {
     photos: [house, bedrooms[0], kitchens[0], bathrooms[0], livingRooms[0], bedrooms[1], kitchens[1], bedrooms[2], bathrooms[1], livingRooms[1]]
   }
   // this is a new document instance for each listing
-  var newListing = new Listings(options);
-  newListing.save();
+  var addListing = new Listings(options);
+  addListing.save();
   console.log("Added to DB")
 }
 
+module.exports = {seed};
