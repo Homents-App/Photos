@@ -31,6 +31,7 @@ npm install
 ```
 ### CRUD
 3. CRUD Operations
+
 | Type    | Endpoint           | Action            |
 | ------- |--------------------| ------------------|
 | POST    | '/api/addListing'  | Adds listing      |
