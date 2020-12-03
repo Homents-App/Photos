@@ -1,7 +1,7 @@
 {
   "name": "Photos",
   "description": "Photo Carousel Component module",
-  "author": "David Kim",
+  "author": "Daniel Lee",
   "license": "ISC",
   "engines": {
     "node": ">=6.13.0"
@@ -14,19 +14,26 @@
     "production": "webpack && node server/index.js"
   },
   "dependencies": {
+    "aws-sdk": "^2.802.0",
     "axios": "^0.21.0",
+    "cassandra-driver": "^4.6.1",
+    "csv-write-stream": "^2.0.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "express": "^4.17.1",
     "faker": "^5.1.0",
+    "fs": "0.0.1-security",
+    "jdk": "0.0.0",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.16",
     "path": "^0.12.7",
     "pg": "^8.5.1",
+    "pgsql": "^1.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-icons": "^3.11.0",
     "styled-components": "^5.2.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
