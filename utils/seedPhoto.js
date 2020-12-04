@@ -28,18 +28,18 @@ const createPhotos = () => {
 
     var photos = {
       id: i,
-      house: house[0],
-      house2: house[1],
-      house3: house[2],
+      bathroom: bathroom[0],
+      bathroom2: bathroom[1],
       bedroom: bedroom[0],
       bedroom2: bedroom[1],
       bedroom3: bedroom[2],
+      house: house[0],
+      house2: house[1],
+      house3: house[2],
       kitchen: kitchen[0],
       kitchen2: kitchen[1],
       livingroom: livingroom[0],
-      livingroom2: livingroom[1],
-      bathroom: bathroom[0],
-      bathroom2: bathroom[1]
+      livingroom2: livingroom[1]
     }
     // write this info into a CSV file
     writer.write(photos)
