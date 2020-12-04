@@ -17,6 +17,7 @@
     "aws-sdk": "^2.802.0",
     "axios": "^0.21.0",
     "cassandra-driver": "^4.6.1",
+    "cql": "0.0.9",
     "csv-write-stream": "^2.0.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "express": "^4.17.1",

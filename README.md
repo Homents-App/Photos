@@ -70,8 +70,61 @@ npm install
     ```sh
     SELECT * FROM listings
     ```
-    - Great! Now your database is set up with your table and all you need to do is populate it.
+    - To import a .sql file:
+    ```sh
+    > \i <path to file nam>
+    ```
+    - To import a .csv file type the following. Keep in mind that options can vary after the path to the file depending on what you want:
+    ```sh
+    > \copy <tablename> FROM <path to file> DELIMITER ',' CSV HEADER;
+    ```
     - reference: https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3
 
 ### Cassandra
 5. Cassandra Setup
+    - Install homebrew if on Mac OS (other OS you have to find out how to install it on your own)
+    - Check your python installation:
+    ```sh
+    python --version
+    ```
+    - If you don't have it, install it:
+    ```sh
+    brew install python
+    ```
+    - You will need Java as well:
+    ```sh
+    brew cask install homebrew/cask-versions/adoptopenjdk8
+    ```
+    - We'll use AdoptOpenJdk:
+    ```sh
+    brew tap AdoptOpenJDK/openjdk
+    ```
+    ```sh
+    brew cask install adoptopenjdk8
+    ```
+    - Type the following command to find all jdk versions:
+    ```sh
+    /usr/libexec/java_home -V
+    ```
+    - Pick the version to make default with the following script:
+    ```sh
+    export JAVA_HOME=`/usr/libexec/java_home -v <version number>`
+    ```
+    - To see the jdk version:
+    ```sh
+    java -version
+    ```
+    - Now you can finally install Cassandra:
+    ```sh
+    brew install cassandra
+    ```
+    - Start Cassandra:
+    ```sh
+    cassandra -f
+    ```
+    - Open a new terminal tab and type:
+    ```sh
+    cqlsh
+    ```
+    - Great! Now you're connected to Cassandra!
+    - reference: https://medium.com/@manishyadavv/how-to-install-cassandra-on-mac-os-d9338fcfcba4
