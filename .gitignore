@@ -6,3 +6,17 @@ node_modules
 
 # login bash script for EC2 instance
 login.sh
+
+utils/csv
+
+get-pip.py
+
+Dockerfile
+
+cassandra.txt
+
+allPhotos/bathroom
+allPhotos/bedroom
+allPhotos/front
+allPhotos/kitchen
+allPhotos/livingroom
