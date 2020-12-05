@@ -19,6 +19,7 @@
     "cassandra-driver": "^4.6.1",
     "cql": "0.0.9",
     "csv-write-stream": "^2.0.0",
+    "dotenv": "^8.2.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "express": "^4.17.1",
     "faker": "^5.1.0",

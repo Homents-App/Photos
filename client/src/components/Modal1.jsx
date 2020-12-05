@@ -28,7 +28,7 @@ const FirstModal = (props) => {
           <Styled.HouseInfo>{`${props.listing.address} | $${props.listing.price.toLocaleString('en')} | ${props.listing.beds} Beds ${props.listing.baths} Baths`}</Styled.HouseInfo>
         </Styled.HouseInfoArea>
 
-        <HousePicturesSection photos={props.listing.photos} setSelectedImg={props.setSelectedImg}/>
+        <HousePicturesSection photos={props.photos} setSelectedImg={props.setSelectedImg}/>
 
         <TourSection />
 

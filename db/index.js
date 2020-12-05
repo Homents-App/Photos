@@ -10,8 +10,8 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.connect('mongodb://localhost/FEC_photos');
 
 // access the default connection
-const db = mongoose.connection;
-db.once('open', () => console.log('Connected to listings database!'));
+// const db = mongoose.connection;
+// db.once('open', () => console.log('Connected to listings database!'));
 
 const ListingsSchema = new mongoose.Schema({
     id: {
@@ -32,7 +32,7 @@ const ListingsSchema = new mongoose.Schema({
 // each document is a new listing with properties declared in schema
 const Listings = mongoose.model('listings', ListingsSchema);
 
-module.exports = {
-  Listings,
-  db
-}
+// module.exports = {
+//   Listings,
+//   db
+// }

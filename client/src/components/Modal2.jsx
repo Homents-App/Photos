@@ -5,19 +5,19 @@ import * as Styled from '../styles/styles.js';
 import {rightArrow, leftArrow} from '../utils/SVG.jsx';
 import s from '../styles/styles.css';
 
-const ImageCarousel = ({selectedImg, onClose, listing, setSelectedImg}) => {
+const ImageCarousel = ({selectedImg, onClose, setSelectedImg, listing, photos}) => {
   if (!selectedImg) return null
 
   var handleNextClick = () => {
-    var nextImgIndex = listing.photos.lastIndexOf(selectedImg);
+    var nextImgIndex = photos.lastIndexOf(selectedImg);
 
-    nextImgIndex === (listing.photos.length - 1) ? setSelectedImg(listing.photos[0]) : setSelectedImg(listing.photos[nextImgIndex + 1]);
+    nextImgIndex === (photos.length - 1) ? setSelectedImg(photos[0]) : setSelectedImg(photos[nextImgIndex + 1]);
   }
 
   var handlePrevClick = () => {
-    var nextImgIndex = listing.photos.lastIndexOf(selectedImg);
+    var nextImgIndex = photos.lastIndexOf(selectedImg);
 
-    nextImgIndex === 0 ? setSelectedImg(listing.photos[listing.photos.length - 1]) : setSelectedImg(listing.photos[nextImgIndex - 1]);
+    nextImgIndex === 0 ? setSelectedImg(photos[photos.length - 1]) : setSelectedImg(photos[nextImgIndex - 1]);
   }
 
   return (
@@ -44,7 +44,7 @@ const ImageCarousel = ({selectedImg, onClose, listing, setSelectedImg}) => {
         <Styled.PrevButton onClick={handlePrevClick}>{leftArrow}</Styled.PrevButton>
 
         <Styled.pageCountContainer>
-          {`${listing.photos.indexOf(selectedImg) + 1} of ${listing.photos.length}`}
+          {`${photos.indexOf(selectedImg) + 1} of ${photos.length}`}
         </Styled.pageCountContainer>
 
       </Styled.ImageDisplay>

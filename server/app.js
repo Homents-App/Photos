@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-const db = require('../db/index.js');
-// const db = require('../db2/index.js');
+// const db = require('../db/index.js');
+// const db = require('../db/postgresql/index.js');
+const db = require('../db/postgresql/models.js');
 const path = require('path');
 const seed = require('./util.js');
 
@@ -11,17 +12,16 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/api/listings/:id', (req, res) => {
 
-  db.Listings.findOne({id: req.params.id})
+  db.getListingData(req.params.id)
     .then(listing => {
-      if (!listing) {
-        throw new Error;
-      }
+      if (!listing) {throw new Error;}
+      console.log('listing: ', listing);
       res.status(200).send(listing);
     })
     .catch(err => {
-      // console.error(err);
       res.status(404).send(err);
     })
+
 })
 
 // add in POST

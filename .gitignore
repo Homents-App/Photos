@@ -17,3 +17,6 @@ cassandra.txt
 
 allPhotos/
 
+.env
+
+db/postgresql/config.js
