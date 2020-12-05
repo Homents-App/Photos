@@ -1,4 +1,4 @@
-const data = require('../allPhotos/photoLink.js');
+const data = require('./photoLink.js');
 const fs = require('fs');
 const csvWriter = require('csv-write-stream');
 const writer = csvWriter();

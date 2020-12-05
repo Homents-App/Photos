@@ -15,8 +15,5 @@ Dockerfile
 
 cassandra.txt
 
-allPhotos/bathroom
-allPhotos/bedroom
-allPhotos/front
-allPhotos/kitchen
-allPhotos/livingroom
+allPhotos/
+
