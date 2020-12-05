@@ -43,11 +43,13 @@ const createPhotos = (writer, encoding, callback) => {
 
       const row = `${id}, ${bathroom}, ${bedroom}, ${bedroom2}, ${house}, ${house2}, ${house3}, ${kitchen}, ${kitchen2}, ${livingroom}, ${livingroom2}\n`
 
+      // last time the write is called, so we invoke the callback
       if (i === 0) {writer.write(row, encoding, callback);
       } else {able = writer.write(row, encoding);}
 
     } while (i > 0 && able);
 
+    // if the buffer is full, wait for drain and then write
     if (i > 0) {writer.once('drain', write);}
   };
   write();

@@ -1,7 +1,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeData = fs.createWriteStream('utils/csv/data.csv');
+const writeData = fs.createWriteStream('utils/csv/data1.csv');
 writeData.write(`id, address, baths, beds, city, price, max, state, zipCode\n`, 'utf8');
 
 const createData = (writer, encoding, callback) => {
@@ -21,11 +21,13 @@ const createData = (writer, encoding, callback) => {
       const zipCode = Math.floor(Math.random() * 90000) + 10000;
       const data = `${id}, ${address}, ${baths}, ${beds}, ${city}, ${price}, ${state}, ${zipCode}\n`
 
+      // last time the write is called, so we invoke the callback
       if (i === 0) {writer.write(data, encoding, callback);
       } else {able = writer.write(data, encoding);}
 
     } while (i > 0 && able);
 
+    // if the buffer is full, wait for drain and then write
     if (i > 0) {writer.once('drain', write);}
   };
   write();

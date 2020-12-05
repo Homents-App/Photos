@@ -5,6 +5,7 @@ const kitchen = [];
 const front = [];
 const bedroom = [];
 
+// generates all the AWS S3 links by bucket and stores into arrays above
 let linkGenerator = (describe, array, max) => {
 
   for (let i = 0; i < max; i++) {

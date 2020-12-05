@@ -12,13 +12,11 @@
   // 150 for living room
     //https://loremflickr.com/1536/1152/house,livingroom/all
 
-
-const AWS = require('aws-sdk');
 const axios = require ('axios');
 const fs = require('fs');
-const s3 = new AWS.S3();
 const path = require('path');
 
+// stores randomly generated images into the appropriate folder
 async function download(describe, max) {
   for (let i = 0; i < max; i++) {
     let url = `https://loremflickr.com/1536/1152/house,${describe}/all`;
