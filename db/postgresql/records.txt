@@ -14,13 +14,35 @@ Time: 17.552 ms
 
 CREATE: //////////////////////////////////////////
 
+EXAMPLE JSON BODY:
+{
+"address": "123 Example Lane",
+"baths": 3,
+"beds" : 4,
+"city": "Nashville",
+"price": 400000,
+"state": "Virginia",
+"zipCode": "12345",
+"bathroom": "http://www.exampleimage.com",
+"bedroom": "http://www.exampleimage.com",
+"bedroom2": "http://www.exampleimage.com",
+"house": "http://www.exampleimage.com",
+"house2": "http://www.exampleimage.com",
+"house3": "http://www.exampleimage.com",
+"kitchen": "http://www.exampleimage.com",
+"kitchen2": "http://www.exampleimage.com",
+"livingroom": "http://www.exampleimage.com",
+"livingroom2": "http://www.exampleimage.com"
+}
+
+
 INSERT INTO listings(id, address, baths, beds, city, price, state, zipCode) VALUES (10000001, '10432 Example Street', 2, 4, 'Richmond', 300000, 'Virginia', 23234);
 
 Result:
 INSERT 0 1
 Time: 8.083 ms
 
-INSERT INTO photos(id, bathroom, bathroom2, bedroom, bedroom2, bedroom3, house, house2, house3, kitchen, kitchen2, livingroom, livingroom2) VALUES (10000001, 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos');
+INSERT INTO photos(id, bathroom, bedroom, bedroom2, house, house2, house3, kitchen, kitchen2, livingroom, livingroom2) VALUES (10000001, 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos', 'http://exampleurl.com/photos');
 
 Result:
 INSERT 0 1

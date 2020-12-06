@@ -27,14 +27,15 @@ app.get('/api/listings/:id', (req, res) => {
 // add in POST
 app.post('/api/addListing', (req, res) => {
 
-  db.Listings.find().sort({id: -1}).limit(1)
-    .then((index) => {
-      let max = index[0].id;
-      console.log('adding: ', max + 1);
-      seed.seed(max + 1);
-    })
-    .then(() => {
-      res.status(200).send("Listing added!");
+  let params1 = [], params2 = [];
+  for (var key in req.body) {
+    let val = req.body[key];
+    (typeof(val) === 'string' && val.slice(0,4) === 'http') ? params2.push(val) : params1.push(val);
+  }
+
+  db.addListingData(params1, params2)
+    .then((id) => {
+      res.status(200).send(`Listing id: ${id} added!`);
     })
     .catch(err => {
       res.status(404).send(err);
@@ -58,7 +59,7 @@ app.put('/api/listings/:id', (req, res) => {
 
 // add in DELETE
 app.delete('/api/listings/:id', (req, res) => {
-  db.Listings.deleteOne({id: req.params.id})
+  db.deleteListing(req.params.id)
     .then(() => {
       res.status(200).send("Listing deleted!")
     })
