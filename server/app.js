@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
-// const db = require('../db/index.js');
-// const db = require('../db/postgresql/index.js');
 const db = require('../db/postgresql/models.js');
 const path = require('path');
-const seed = require('./util.js');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -21,7 +18,6 @@ app.get('/api/listings/:id', (req, res) => {
     .catch(err => {
       res.status(404).send(err);
     })
-
 })
 
 // add in POST
@@ -44,8 +40,6 @@ app.post('/api/addListing', (req, res) => {
 
 // add in PUT (update)
 app.put('/api/listings/:id', (req, res) => {
-  // need to update specific parameter in the DB
-  // maybe use variables and ? to dynamically update
 
   console.log(req.body);
   db.Listings.updateOne({id: req.params.id}, req.body)
