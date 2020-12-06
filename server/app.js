@@ -7,6 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
+// Retreives all listing data and photos for given id
 app.get('/api/listings/:id', (req, res) => {
 
   db.getListingData(req.params.id)
@@ -20,7 +21,7 @@ app.get('/api/listings/:id', (req, res) => {
     })
 })
 
-// add in POST
+// Creates listing with params1 and creates photos from params2
 app.post('/api/addListing', (req, res) => {
 
   let params1 = [], params2 = [];
@@ -38,20 +39,19 @@ app.post('/api/addListing', (req, res) => {
     })
 })
 
-// add in PUT (update)
+// Only updates price - no real update functionality on front end
 app.put('/api/listings/:id', (req, res) => {
 
-  console.log(req.body);
-  db.Listings.updateOne({id: req.params.id}, req.body)
+  db.updateListing([req.body.price, req.params.id])
     .then(() => {
-      res.status(200).send("Listing updated!")
+      res.status(200).send(`Listing price updated to ${req.body.price}!`)
     })
     .catch(err => {
       res.status(404).send(err);
     })
 })
 
-// add in DELETE
+// Deletes listing row, matching photo row automatically deleted
 app.delete('/api/listings/:id', (req, res) => {
   db.deleteListing(req.params.id)
     .then(() => {

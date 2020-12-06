@@ -1,6 +1,8 @@
 const { pool } = require('./index.js');
 
 // CREATE
+// Creates new listing and returns serial id
+// Second query uses id from first to create referenced row
 const addListingData = async (params1, params2) => {
   let query1 = `INSERT INTO listings(address, baths, beds, city, price, state, zipCode) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`;
   let query2 = `INSERT INTO photos(id, bathroom, bedroom, bedroom2, house, house2, house3, kitchen, kitchen2, livingroom, livingroom2) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
@@ -17,7 +19,7 @@ const addListingData = async (params1, params2) => {
 }
 
 // READ
-// Implement this with an inner join
+// Retreives all listing and photo data for given id
 const getListingData = async (id) => {
   console.log('here', id);
   let query = `SELECT * FROM listings as l INNER JOIN photos as p ON l.id=p.id WHERE l.id=$1;`
@@ -33,6 +35,7 @@ const getListingData = async (id) => {
 }
 
 // UPDATE
+// Simple update of price since no real update functionality in front end
 const updateListing = async (params) => {
   let query = `UPDATE listings SET price=$1 WHERE id=$2;`;
   let res;
@@ -58,6 +61,7 @@ const updatePhotos = async (params) => {
 }
 
 // DELETE
+// Deletes row in listings by id, referenced row in photos will be automaticallyd deleted
 const deleteListing = async (id) => {
   let query = `DELETE FROM listings WHERE id=$1;`
 
