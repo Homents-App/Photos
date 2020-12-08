@@ -13,7 +13,6 @@ app.get('/api/listings/:id', (req, res) => {
   db.getListingData(req.params.id)
     .then(listing => {
       if (!listing) {throw new Error;}
-      console.log('listing: ', listing);
       res.status(200).send(listing);
     })
     .catch(err => {

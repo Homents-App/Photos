@@ -20,3 +20,9 @@ allPhotos/
 .env
 
 db/postgresql/config.js
+
+newrelic.js
+newrelic_agent.log
+
+testLoad.js
+testStress.js

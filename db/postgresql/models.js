@@ -21,7 +21,6 @@ const addListingData = async (params1, params2) => {
 // READ
 // Retreives all listing and photo data for given id
 const getListingData = async (id) => {
-  console.log('here', id);
   let query = `SELECT * FROM listings as l INNER JOIN photos as p ON l.id=p.id WHERE l.id=$1;`
 
   let res;
