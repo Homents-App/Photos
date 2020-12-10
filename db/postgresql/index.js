@@ -6,6 +6,7 @@ const pool = new Pool({
   password: process.env.PGPASSWORD,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE
+  // config do not allow to connect to root
 });
 
 pool.on('error', (err, client) => {

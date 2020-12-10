@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-// Retreives all listing data and photos for given id
+// Retrieves all listing data and photos for given id
 app.get('/api/listings/:id', (req, res) => {
 
   db.getListingData(req.params.id)
