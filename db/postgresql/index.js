@@ -5,6 +5,7 @@ const pool = new Pool({
   user: process.env.PGUSER,
   password: process.env.PGPASSWORD,
   host: process.env.PGHOST,
+  port: process.env.DB_PORT,
   database: process.env.PGDATABASE
   // config do not allow to connect to root
 });
