@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const db = require('../db/postgresql/models.js');
 const path = require('path');
+const compression = require('compression');
+
+app.use(compression());
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -11,6 +14,28 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.get('/api/listings/:id', (req, res) => {
 
   db.getListingData(req.params.id)
+    .then(listing => {
+      if (!listing) {throw new Error;}
+      res.status(200).send(listing);
+    })
+    .catch(err => {
+      res.status(404).send(err);
+    })
+})
+
+
+app.get('/loaderio-2d312fb6eb126eee0159e8c5bb0fd79a.txt', (req, res) => {
+  res.sendFile(path.join(__dirname, '../loaderio.txt'))
+})
+
+
+app.get('/', (req, res) => {
+  function getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  let id = getRandomNum(8000000, 10000000);
+
+  db.getListingData(id)
     .then(listing => {
       if (!listing) {throw new Error;}
       res.status(200).send(listing);
