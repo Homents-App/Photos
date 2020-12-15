@@ -55,9 +55,10 @@ db.getListingData(id)
     if (!listing) {throw new Error;}
     // adding the listing to redis
     client.set(req.params.id, data, redis.print);
-    return listing
+    return listing;
   })
   .then(listing => {
+    console.log('listing', listing);
     res.status(200).send(listing);
   })
   .catch(err => {
