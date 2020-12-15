@@ -3,6 +3,7 @@ const app = express();
 const db = require('../db/postgresql/models.js');
 const path = require('path');
 const compression = require('compression');
+const client = require('./redis.js')
 
 app.use(compression());
 
@@ -17,6 +18,9 @@ app.get('/api/listings/:id', (req, res) => {
     .then(listing => {
       if (!listing) {throw new Error;}
       res.status(200).send(listing);
+    })
+    .then(listing => {
+      console.log('here listing', listing);
     })
     .catch(err => {
       res.status(404).send(err);
