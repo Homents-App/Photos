@@ -27,7 +27,10 @@ app.get('/api/listings/:id', (req, res) => {
       console.log('server here1:', req.params.id);
       if (!listing) {throw new Error;}
       // adding the listing to redis
-      client.set(req.params.id, data, redis.print);
+      client.set(req.params.id, data, (err, reply) => {
+        if (err) throw err;
+      console.log('Redis', reply);
+      });
       return listing
     })
     .then(listing => {
