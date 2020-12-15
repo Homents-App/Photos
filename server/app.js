@@ -4,6 +4,7 @@ const db = require('../db/postgresql/models.js');
 const path = require('path');
 const compression = require('compression');
 const client = require('./redis.js')
+var redis = require('redis');
 
 app.use(compression());
 
@@ -13,21 +14,24 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 // Retrieves all listing data and photos for given id
 app.get('/api/listings/:id', (req, res) => {
-  let data;
+
   db.getListingData(req.params.id)
     .then(listing => {
       // console.log('listing', listing)
       console.log('server here: ', req.params.id);
       if (!listing) {throw new Error;}
       // adding the listing to redis
-      data = listing;
+      console.log('here')
       res.status(200).send(listing);
+      console.log('here2')
+      client.set(req.params.id, data, redis.print);
+      console.log('here3')
+      res.end();
     })
     .catch(err => {
       res.status(404).send(err);
     })
-    console.log('listing', data);
-    client.set(req.params.id, data, redis.print)
+
 })
 
 
