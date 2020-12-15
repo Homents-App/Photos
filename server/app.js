@@ -24,12 +24,12 @@ app.get('/api/listings/:id', (req, res) => {
     .then(listing => {
       console.log('server here:', req.params.id);
       if (!listing) {throw new Error;}
-      res.status(200).send(listing);
+      // adding the listing to redis
+      client.set(req.params.id, data, redis.print);
       return listing
     })
     .then(listing => {
-      // adding the listing to redis
-      client.set(req.params.id, data, redis.print);
+      res.status(200).send(listing);
     })
     .catch(err => {
       res.status(404).send(err);
@@ -40,21 +40,28 @@ app.get('/loaderio-2d312fb6eb126eee0159e8c5bb0fd79a.txt', (req, res) => {
   res.sendFile(path.join(__dirname, '../loaderio.txt'))
 })
 
-// app.get('/', (req, res) => {
-//   function getRandomNum(min, max) {
-//     return Math.floor(Math.random() * (max - min)) + min;
-//   }
-//   let id = getRandomNum(8000000, 10000000);
+app.get('/', (req, res) => {
+   function getRandomNum(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+let fakeId = getRandomNum(8000000, 10000000);
+let id = req.params.id || fakeId;
 
-//   db.getListingData(id)
-//     .then(listing => {
-//       if (!listing) {throw new Error;}
-//       res.status(200).send(listing);
-//     })
-//     .catch(err => {
-//       res.status(404).send(err);
-//     })
-// })
+db.getListingData(id)
+  .then(listing => {
+    console.log('server here:', req.params.id);
+    if (!listing) {throw new Error;}
+    // adding the listing to redis
+    client.set(req.params.id, data, redis.print);
+    return listing
+  })
+  .then(listing => {
+    res.status(200).send(listing);
+  })
+  .catch(err => {
+    res.status(404).send(err);
+  })
+})
 
 // Creates listing with params1 and creates photos from params2
 app.post('/api/addListing', (req, res) => {
