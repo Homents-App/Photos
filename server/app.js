@@ -5,9 +5,11 @@ const path = require('path');
 const compression = require('compression');
 const client = require('./redis.js')
 var redis = require('redis');
+const morgan = require('morgan');
 
 app.use(compression());
 
+app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
