@@ -17,6 +17,7 @@
     "aws-sdk": "^2.802.0",
     "axios": "^0.21.0",
     "cassandra-driver": "^4.6.1",
+    "compression": "^1.7.4",
     "cql": "0.0.9",
     "csv-write-stream": "^2.0.0",
     "dotenv": "^8.2.0",
