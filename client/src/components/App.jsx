@@ -22,8 +22,12 @@ const App = () => {
   }, []);
 
   var fetchListing = () => {
+    let url = (window.location.href).split('/');
+    console.log('url', url);
     var id = Math.floor(Math.random() * 10000000);
-    axios.get(`/api/listings/${id}`)
+    let homeId = url[url.length-1] || id;
+
+    axios.get(`/api/listings/${homeId}`)
       .then(newListing => {
         console.log('new:' ,newListing.data)
         setListing(newListing.data);
