@@ -27,7 +27,7 @@ app.get('/api/listings/:id', (req, res) => {
       console.log('server here1:', req.params.id);
       if (!listing) {throw new Error;}
       // adding the listing to redis
-      console.log('here')
+      console.log('here', typeof(req.params.id))
       client.set(req.params.id, listing, (err, reply) => {
         if (err) throw err;
         console.log('Redis', reply);
