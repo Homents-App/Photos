@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const db = require('../db/postgresql/models.js');
 const path = require('path');
+const compression = require('compression');
+
+app.use(compression());
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

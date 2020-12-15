@@ -22,7 +22,7 @@ EXAMPLE JSON BODY:
 "city": "Nashville",
 "price": 400000,
 "state": "Virginia",
-"zipCode": "12345",
+"zipCode": 12345,
 "bathroom": "http://www.exampleimage.com",
 "bedroom": "http://www.exampleimage.com",
 "bedroom2": "http://www.exampleimage.com",
