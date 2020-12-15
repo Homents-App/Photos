@@ -13,19 +13,21 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 // Retrieves all listing data and photos for given id
 app.get('/api/listings/:id', (req, res) => {
-
+  let data;
   db.getListingData(req.params.id)
     .then(listing => {
       // console.log('listing', listing)
       console.log('server here: ', req.params.id);
       if (!listing) {throw new Error;}
       // adding the listing to redis
-      client.set(req.params.id, listing, redis.print)
+      data = listing;
       res.status(200).send(listing);
     })
     .catch(err => {
       res.status(404).send(err);
     })
+    console.log('listing', data);
+    client.set(req.params.id, data, redis.print)
 })
 
 
