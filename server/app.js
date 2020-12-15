@@ -13,14 +13,15 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 // Retrieves all listing data and photos for given id
 app.get('/api/listings/:id', (req, res) => {
-
+  let data;
   db.getListingData(req.params.id)
     .then(listing => {
+      data = listing;
       if (!listing) {throw new Error;}
       res.status(200).send(listing);
     })
-    .then(listing => {
-      console.log('here listing', listing);
+    .then(data => {
+      console.log('here listing', data);
     })
     .catch(err => {
       res.status(404).send(err);
