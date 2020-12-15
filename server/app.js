@@ -4,7 +4,7 @@ const db = require('../db/postgresql/models.js');
 const path = require('path');
 const compression = require('compression');
 const client = require('./redis.js')
-var redis = require('redis');
+const redis = require('redis');
 const morgan = require('morgan');
 
 app.use(compression());
@@ -24,7 +24,7 @@ app.get('/api/listings/:id', (req, res) => {
 
   db.getListingData(id)
     .then(listing => {
-      console.log('server here:', req.params.id);
+      console.log('server here1:', req.params.id);
       if (!listing) {throw new Error;}
       // adding the listing to redis
       client.set(req.params.id, data, redis.print);
@@ -51,7 +51,7 @@ let id = req.params.id || fakeId;
 
 db.getListingData(id)
   .then(listing => {
-    console.log('server here:', req.params.id);
+    console.log('server here:2', req.params.id);
     if (!listing) {throw new Error;}
     // adding the listing to redis
     client.set(req.params.id, data, (err, reply) => {
