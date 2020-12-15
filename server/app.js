@@ -17,16 +17,15 @@ app.get('/api/listings/:id', (req, res) => {
 
   db.getListingData(req.params.id)
     .then(listing => {
-      // console.log('listing', listing)
       console.log('server here: ', req.params.id);
       if (!listing) {throw new Error;}
-      // adding the listing to redis
-      console.log('here')
       res.status(200).send(listing);
-      console.log('here2')
-      client.set(req.params.id, data, redis.print);
-      console.log('here3')
-      res.end();
+      return listing
+    })
+    .then(listing => {
+      console.log('listing', listing)
+      // adding the listing to redis
+      // client.set(req.params.id, data, redis.print);
     })
     .catch(err => {
       res.status(404).send(err);
