@@ -10,8 +10,8 @@ const NavBar = ({listing}) => {
 
       <Styled.LeftSideNavContainer>
         <Styled.Logo></Styled.Logo>
-          <Styled.SearchHouses placeholder="Search for City, Neighborhood, Zip, County, ..."></Styled.SearchHouses>
-          <Styled.SearchHousesButton aria-label="Search Button">{searchIcon}</Styled.SearchHousesButton>
+          <Styled.SearchHouses aria-label="Search input" placeholder="Search for City, Neighborhood, Zip, County, ..."></Styled.SearchHouses>
+          <Styled.SearchHousesButton aria-label="Search button">{searchIcon}</Styled.SearchHousesButton>
 
         <Styled.BuyDropDown>Buy</Styled.BuyDropDown>
         <Styled.RentDropDown>Rent</Styled.RentDropDown>
@@ -22,7 +22,7 @@ const NavBar = ({listing}) => {
         <Styled.SavedHomes>Saved Homes</Styled.SavedHomes>
         <Styled.SavedSearches>Saved Searches</Styled.SavedSearches>
         <Styled.SignUpOrLogin>Sign up or Log in</Styled.SignUpOrLogin>
-        <Styled.MainMenu aria-label="Main Menu">{mainMenu}</Styled.MainMenu>
+        <Styled.MainMenu aria-label="Main menu">{mainMenu}</Styled.MainMenu>
       </Styled.RightSideNavContainer>
 
     </Styled.NavBar>
