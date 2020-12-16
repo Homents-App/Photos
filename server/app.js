@@ -20,7 +20,8 @@ app.use('/api', (req, res, next) => {
 			console.log('Pulling from Redis cache')
 			client.get(id, (err, reply) => {
 				if (err) {console.log(err)}
-				res.send(JSON.parse(reply));
+        res.send(JSON.parse(reply));
+        console.log('Pulled', reply)
 			})
 		} else {
 			next();
