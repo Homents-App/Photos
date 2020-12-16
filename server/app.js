@@ -14,6 +14,20 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
+app.use('/api', (req, res, next) => {
+  client.exists(req.params.id, (err, reply) => {
+		if (reply === 1) {
+			console.log('Pulling from Redis cache')
+			client.get(id, (err, reply) => {
+				if (err) {console.log(err)}
+				res.send(JSON.parse(reply));
+			})
+		} else {
+			next();
+		}
+	})
+})
+
 // Retrieves all listing data and photos for given id
 app.get('/api/listings/:id', (req, res) => {
   function getRandomNum(min, max) {
