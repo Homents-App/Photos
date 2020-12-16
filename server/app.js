@@ -45,11 +45,16 @@ app.get('/api/listings/:id', (req, res) => {
 
       if (!listing) {throw new Error;}
       // adding the listing to redis
-      client.set(req.params.id, JSON.stringify(listing), (err, reply) => {
-        if (err) throw err;
-        console.log('Redis', reply);
-      });
-      return listing
+
+      client.exists(id, (err, reply) => {
+        if (reply === 1) {
+          client.set(id, JSON.stringify(listing), (err, reply) => {
+            if (err) throw err;
+            console.log('Redis', reply);
+          });
+        }
+      })
+      return listing;
     })
     .then(listing => {
       res.status(200).send(listing);
