@@ -23,16 +23,16 @@ app.get('/api/listings/:id', (req, res) => {
   let id = req.params.id || fakeId;
 
   db.getListingData(id)
-    .then(listing => {
+    // .then(listing => {
 
-      if (!listing) {throw new Error;}
-      // adding the listing to redis
-      client.set(req.params.id, JSON.stringify(listing), (err, reply) => {
-        if (err) throw err;
-        console.log('Redis', reply);
-      });
-      return listing
-    })
+    //   if (!listing) {throw new Error;}
+    //   // adding the listing to redis
+    //   client.set(req.params.id, JSON.stringify(listing), (err, reply) => {
+    //     if (err) throw err;
+    //     console.log('Redis', reply);
+    //   });
+    //   return listing
+    // })
     .then(listing => {
       res.status(200).send(listing);
     })
