@@ -24,8 +24,11 @@ const App = () => {
   var fetchListing = () => {
     let url = (window.location.href).split('/');
     console.log('url', url);
-    var id = Math.floor(Math.random() * 10000000);
-    let homeId = url[url.length-1] || id;
+    function getRandomNum(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+    let fakeId = getRandomNum(8000000, 10000000);
+    let homeId = url[url.length-1] || fakeId;
 
     axios.get(`/api/listings/${homeId}`)
       .then(newListing => {
