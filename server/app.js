@@ -15,6 +15,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 app.use('/api', (req, res, next) => {
+  console.log('id', req.params.id);
+  console.log('idtype', typeof(req.params.id));
   client.exists(req.params.id, (err, reply) => {
 		if (reply === 1) {
 			console.log('Pulling from Redis cache')
